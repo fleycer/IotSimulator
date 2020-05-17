@@ -3,7 +3,7 @@
         "type":"simple",
         "uuid":"",
         "topic":"sensor-reading",
-        "partition":"{$uuid}"
+        "partition":"{$uuid}",
         "sampling":{"type":"fixed", "interval":1000},
         "copy":10,
         "sensors":[
