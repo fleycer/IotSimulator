@@ -4,8 +4,8 @@
         "uuid":"",
         "topic":"sensor-reading",
         "partition":"{$uuid}",
-        "sampling":{"type":"fixed", "interval":1000},
-        "copy":10,
+        "sampling":{"type":"fixed", "interval":10},
+        "copy":1,
         "sensors":[
             {"type":"string", "name":"sensorType", "cycle":["temperature"]},
             {"type":"dev.timestamp",    "name":"ts", "format":"yyyy-MM-dd'T'HH:mm:ss.SSSZ"},
