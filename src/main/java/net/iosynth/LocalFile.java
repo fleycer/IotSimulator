@@ -7,6 +7,7 @@ import net.iosynth.device.DeviceControl;
 import net.iosynth.device.DevicesFromJson;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class LocalFile {
         for (BlockingQueue<Message> msgQueue : msgQueues) {
             try {
                 locaFile = new AdapterLocalFile(cfgLocalFile, msgQueue);
-            } catch (URISyntaxException e) {
+            } catch (FileNotFoundException e) {
                 return;
             }
         }

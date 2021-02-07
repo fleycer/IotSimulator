@@ -27,9 +27,10 @@ public class AdapterLocalFile extends Thread {
      * @param cfg
      * @param msgQueue
      */
-    public AdapterLocalFile(ConfigLocalFile cfg, BlockingQueue<Message> msgQueue) throws URISyntaxException {
+    public AdapterLocalFile(ConfigLocalFile cfg, BlockingQueue<Message> msgQueue) throws FileNotFoundException {
 		// Adapter default configuration
     	this.localFile   = cfg.file;
+		setOptions(msgQueue);
 		start();
     }
     
@@ -61,6 +62,7 @@ public class AdapterLocalFile extends Thread {
 
 					bw.write(msg.getMsg().toString());
 					bw.newLine();
+					bw.flush();
 
 					k++;
 				}
