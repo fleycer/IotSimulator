@@ -22,6 +22,7 @@ public class Config {
 	 * Devices configuration json
 	 */
 	public String devJson;
+
 	private String cfgFile;
 	private String devFile;
 	private static String usage = "\nUsage: java -cp iosynth.jar net.iosynth.Mqtt -c config.json -d devices.json\n";
@@ -63,6 +64,25 @@ public class Config {
 		} catch (IOException ie) {
 			logger.log(Level.SEVERE, ie.toString(), ie);
 			System.exit(1);
+		}
+	}
+
+	public Config(String cfgFile, String devFile) {
+		if (cfgFile != null) {
+			try {
+				cfgJson = new String(Files.readAllBytes(Paths.get(cfgFile)));
+			} catch (IOException ie) {
+				logger.log(Level.SEVERE, ie.toString(), ie);
+				System.exit(1);
+			}
+		}
+		if (devFile != null) {
+			try {
+				devJson = new String(Files.readAllBytes(Paths.get(devFile)));
+			} catch (IOException ie) {
+				logger.log(Level.SEVERE, ie.toString(), ie);
+				System.exit(1);
+			}
 		}
 	}
 

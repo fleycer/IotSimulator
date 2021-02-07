@@ -72,7 +72,7 @@ public class AdapterMqtt extends Thread {
 			try {
 				while (true) {
 					final Message msg = msgQueue.take();
-					if (k % 100000 == 0) {
+					if (k % 1000 == 0) {
 						logger.info("queue: " + msgQueue.size());
 					}
 					MqttMessage message = new MqttMessage(msg.getMsg().getBytes());

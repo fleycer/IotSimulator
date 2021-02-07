@@ -27,7 +27,7 @@
 	<plugins>
 		<plugin>
 			<artifactId>maven-assembly-plugin</artifactId>
-			<version>3.0.0</version>
+			<version>3.3.0</version>
 			<executions>
 				<execution>
 					<phase>package</phase>
@@ -47,6 +47,26 @@
 						<mainClass>net.iosynth.Mqtt</mainClass>
 					</manifest>
 				</archive>
+			</configuration>
+		</plugin>
+		<plugin>
+			<groupId>com.google.cloud.tools</groupId>
+			<artifactId>jib-maven-plugin</artifactId>
+			<version>2.7.1</version>
+			<configuration>
+				<from>
+					<image>openjdk:8-jre-alpine</image>
+				</from>
+				<to>
+					<image>registry.hub.docker.com/trivadis/iot-simulator</image>
+					<auth>
+						<username>gschmutz</username>
+					</auth>
+				</to>
+				<container>
+					<mainClass>net.iosynth.IoTSimulator</mainClass>
+
+				</container>
 			</configuration>
 		</plugin>
 	</plugins>
@@ -74,6 +94,11 @@
 		<groupId>com.microsoft.azure.sdk.iot</groupId>
 		<artifactId>iot-device-client</artifactId>
 		<version>1.29.0</version>
+	</dependency>
+	<dependency>
+		<groupId>info.picocli</groupId>
+		<artifactId>picocli</artifactId>
+		<version>4.6.1</version>
 	</dependency>
 	<dependency> <!-- To avoid logging errors -->
 		<groupId>org.slf4j</groupId>
