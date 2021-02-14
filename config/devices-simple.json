@@ -4,7 +4,7 @@
         "uuid":"",
         "topic":"device/{$uuid}",
         "sampling":{"type":"fixed", "interval":10000},
-        "copy":2,
+        "copy":1,
         "sensors":[
             {"type":"dev.timestamp",    "name":"ts"},
             {"type":"dev.uuid",         "name":"uuid"},

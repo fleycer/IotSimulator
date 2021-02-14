@@ -86,7 +86,13 @@ public class AdapterAzureIoTHub extends Thread {
 
 					com.microsoft.azure.sdk.iot.device.Message iothubMsg = new com.microsoft.azure.sdk.iot.device.Message(msg.getMsg().getBytes());
 					Object lockobj = new Object();
+
 					iothubMsg.setMessageId(UUID.randomUUID().toString());
+					if (msg.getUuid() != null)
+						iothubMsg.setProperty("uuid", msg.getUuid());
+
+					//
+					logger.info("Sending message : " + msg);
 
 					// Send the message.
 					EventCallback callback = new EventCallback();

@@ -172,6 +172,20 @@ public abstract class Device implements Runnable {
 	}
 
 	/**
+	 * @return the ipv6
+	 */
+	public String getIpv6() {
+		return ipv6;
+	}
+
+	/**
+	 * @param ipv6 the ipv6 to set
+	 */
+	public void setIpv6(String ipv6) {
+		this.ipv6 = ipv6;
+	}
+
+	/**
 	 * @return the mac48
 	 */
 	public String getMac48() {
@@ -360,7 +374,8 @@ public abstract class Device implements Runnable {
 		if(deviceTemplate == null){
 			return toJsonListMessage();
 		} else {
-			return new Message(getTopic(), getDeviceTemplate().getJson(sensors));
+			System.out.println(getUuid());
+			return new Message(getTopic(), getUuid(), getIpv4(), getIpv6(), getMac48(), getMac64(), getDeviceTemplate().getJson(sensors));
 		}
 	}
 	
@@ -383,7 +398,9 @@ public abstract class Device implements Runnable {
 		m.deleteCharAt(m.length() - 1); // remove last comma
 		m.append("}");
 
-		return new Message(getTopic(), m.toString());
+		System.out.println(getUuid());
+
+		return new Message(getTopic(), getUuid(), getIpv4(), getIpv6(), getMac48(), getMac64(), m.toString());
 	}
 	
 }
